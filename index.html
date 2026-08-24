@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minha Estante — controle de leituras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark"></span>
+      <div>
+        <h1>Minha Estante</h1>
+        <p class="topbar__subtitle">um jeito simples de acompanhar o que você lê</p>
+      </div>
+    </div>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+      <span aria-hidden="true">🌙</span>
+    </button>
+  </header>
+
+  <main class="wrap">
+
+    <section class="stats" aria-label="Resumo da estante">
+      <div class="stat-card">
+        <span class="stat-card__number" id="statTotal">0</span>
+        <span class="stat-card__label">livros na estante</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__number" id="statLendo">0</span>
+        <span class="stat-card__label">lendo agora</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__number" id="statLidos">0</span>
+        <span class="stat-card__label">já lidos</span>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Adicionar livro">
+      <h2 class="panel__title">Adicionar livro</h2>
+      <form id="bookForm" class="book-form">
+        <div class="field">
+          <label for="title">Título</label>
+          <input type="text" id="title" name="title" placeholder="Ex.: Dom Casmurro" required />
+        </div>
+        <div class="field">
+          <label for="author">Autor(a)</label>
+          <input type="text" id="author" name="author" placeholder="Ex.: Machado de Assis" required />
+        </div>
+        <div class="field field--small">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="quero-ler">Quero ler</option>
+            <option value="lendo">Lendo</option>
+            <option value="lido">Lido</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="filters" aria-label="Filtrar livros">
+      <button class="filter-btn is-active" data-filter="todos" type="button">Todos</button>
+      <button class="filter-btn" data-filter="quero-ler" type="button">Quero ler</button>
+      <button class="filter-btn" data-filter="lendo" type="button">Lendo</button>
+      <button class="filter-btn" data-filter="lido" type="button">Lidos</button>
+    </section>
+
+    <section aria-label="Lista de livros">
+      <div id="bookGrid" class="book-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>
+        Sua estante está vazia por aqui. Adicione um livro acima para começar. 
+      </p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+/* =========================================================
+   Minha Estante — folha de estilos
+   Paleta: verde-mata, pergaminho e mostarda (tema "biblioteca")
+   ========================================================= */
+
+:root {
+  --bg: #F1E9D8;
+  --bg-soft: #E8DCC3;
+  --surface: #FFFDF8;
+  --ink: #22301F;
+  --ink-soft: #5B6459;
+  --green: #1F2E24;
+  --green-soft: #33472E;
+  --gold: #C9962B;
+  --brick: #A6553C;
+  --border: rgba(34, 48, 31, 0.14);
+  --shadow: 0 10px 24px rgba(31, 46, 36, 0.10);
+  --radius: 14px;
+}
+
+[data-theme="dark"] {
+  --bg: #161A15;
+  --bg-soft: #1E241C;
+  --surface: #212820;
+  --ink: #EFE9DA;
+  --ink-soft: #e7eae4;
+  --green: #EFE9DA;
+  --green-soft: #f0b53a;
+  --gold: #E0B24C;
+  --brick: #fa6b3c;
+  --border: rgba(239, 233, 218, 0.12);
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Karla", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  font-family: "Fraunces", Georgia, serif;
+  margin: 0;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--green);
+  color: var(--bg);
+}
+
+[data-theme="dark"] .topbar { background: var(--surface); color: var(--ink); }
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar__mark {
+  font-size: 1.8rem;
+}
+
+.topbar h1 {
+  font-size: 1.35rem;
+  color: inherit;
+}
+
+.topbar__subtitle {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.theme-toggle {
+  border: 1px solid rgba(241, 233, 216, 0.35);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover { background: rgba(241, 233, 216, 0.12); }
+.theme-toggle:active { transform: scale(0.92); }
+
+/* ---------- Layout geral ---------- */
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* ---------- Estatísticas ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.stat-card__number {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brick);
+}
+
+.stat-card__label {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Painel / formulário ---------- */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.75rem;
+}
+
+.panel__title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--green-soft);
+}
+
+.book-form {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr auto;
+  gap: 0.9rem;
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.btn:focus-visible,
+.filter-btn:focus-visible,
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.2rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--brick);
+  color: #FFF8ED;
+}
+
+.btn--primary:hover { opacity: 0.9; }
+.btn:active { transform: scale(0.97); }
+
+/* ---------- Filtros ---------- */
+
+.filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.filter-btn.is-active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+
+[data-theme="dark"] .filter-btn.is-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1A1A1A;
+}
+
+/* ---------- Grade de livros ---------- */
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+
+.book-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  animation: rise 0.25s ease;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.book-card__spine {
+  width: 34px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--gold);
+}
+
+.book-card[data-status="quero-ler"] .book-card__spine { background: var(--ink-soft); }
+.book-card[data-status="lendo"] .book-card__spine { background: var(--brick); }
+.book-card[data-status="lido"] .book-card__spine { background: var(--green-soft); }
+
+.book-card__title {
+  font-family: "Fraunces", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.book-card__author {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.book-card__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.status-select {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  background: var(--bg-soft);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.remove-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.remove-btn:hover {
+  color: var(--brick);
+  background: rgba(166, 85, 60, 0.12);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 2.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Rodapé ---------- */
+
+.footer {
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsividade ---------- */
+
+@media (max-width: 720px) {
+  .book-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .book-form .btn { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    padding: 1rem;
+  }
+  .topbar h1 { font-size: 1.15rem; }
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .book-form {
+    grid-template-columns: 1fr;
+  }
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
