@@ -38,7 +38,7 @@ ou usar a extensão "Live Server" do VS Code, se preferir.
    git add .
    git commit -m "Primeiro commit: Minha Estante"
    git branch -M main
-   git remote add origin https://github.com/SEU-USUARIO/estante-livros.git
+   git remote add origin https://github.com/SEU-USUARIO/Minha-Estante.git
    git push -u origin main
    ```
 3. No GitHub, vá em **Settings → Pages**.
