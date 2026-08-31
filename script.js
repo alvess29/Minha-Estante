@@ -1,11 +1,3 @@
-/* =========================================================
-   Minha Estante — lógica da aplicação
-   - Adicionar / remover / atualizar status de livros
-   - Filtrar por status
-   - Estatísticas em tempo real
-   - Persistência em localStorage
-   - Alternância de tema claro/escuro
-   ========================================================= */
 
 const STORAGE_KEY = "minha-estante-livros";
 const THEME_KEY = "minha-estante-tema";
@@ -29,7 +21,6 @@ const STATUS_LABELS = {
   "lido": "Lido",
 };
 
-/* ---------- Persistência ---------- */
 
 function loadBooks() {
   try {
@@ -45,7 +36,6 @@ function saveBooks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
 }
 
-/* ---------- Renderização ---------- */
 
 function render() {
   const visibleBooks =
@@ -86,8 +76,6 @@ function createBookCard(book) {
     </div>
   `;
 
-  // Usamos textContent (em vez de innerHTML) para título/autor,
-  // evitando problemas com caracteres especiais e injeção de HTML.
   card.querySelector(".book-card__title").textContent = book.title;
   card.querySelector(".book-card__author").textContent = book.author;
 
@@ -112,7 +100,6 @@ function updateStats() {
   statLidos.textContent = books.filter((b) => b.status === "lido").length;
 }
 
-/* ---------- Formulário ---------- */
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -136,8 +123,6 @@ form.addEventListener("submit", (e) => {
   render();
 });
 
-/* ---------- Filtros ---------- */
-
 filterButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     filterButtons.forEach((b) => b.classList.remove("is-active"));
@@ -147,7 +132,6 @@ filterButtons.forEach((btn) => {
   });
 });
 
-/* ---------- Tema claro/escuro ---------- */
 
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
@@ -160,7 +144,6 @@ themeToggle.addEventListener("click", () => {
   applyTheme(current === "dark" ? "light" : "dark");
 });
 
-/* ---------- Inicialização ---------- */
 
 (function init() {
   const savedTheme =
@@ -168,7 +151,6 @@ themeToggle.addEventListener("click", () => {
     (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   applyTheme(savedTheme);
 
-  // Dados de exemplo na primeira visita, só para o usuário ver a interface funcionando.
   if (books.length === 0) {
     books = [
       { id: "seed-1", title: "Dom Casmurro", author: "Machado de Assis", status: "lido" },
